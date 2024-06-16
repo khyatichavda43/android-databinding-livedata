@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="mainViewModel"
+            type="com.example.databindingdemo.MainViewModel" />
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp"
+    android:gravity="center_horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:text="OneWay data Binding"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{mainViewModel.mybookname}"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/autherText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@{mainViewModel.myAuther}"
+            android:textSize="16dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->mainViewModel.updateLiveData()}"
+            android:text="Update"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Two Way DataBinding"
+            android:textSize="25sp"/>
+
+        <EditText
+            android:id="@+id/edtname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Type Here"
+            android:text="@={mainViewModel.userval}"/>
+
+        <TextView
+            android:id="@+id/typedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:text="@{mainViewModel.userval}"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+</layout>
